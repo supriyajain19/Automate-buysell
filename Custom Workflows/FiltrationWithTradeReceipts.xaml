@@ -1,0 +1,84 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="FiltrationWithTradeReceipts" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:moie="clr-namespace:Microsoft.Office.Interop.Excel;assembly=Microsoft.Office.Interop.Excel" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_FilePath" Type="InArgument(x:String)" />
+    <x:Property Name="in_CurrentMonth" Type="InArgument(x:String)" />
+    <x:Property Name="in_CurrentYear" Type="InArgument(x:Int32)" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>395.2,522.4</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>FiltrationWithTradeReceipts_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.IntelligentOCR</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:Annotation.AnnotationText="FiltrationWithTradeReceipts." DisplayName="Sequence_FiltrationWithTradeReceipts" sap:VirtualizedContainerService.HintSize="375.2,462.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:InvokeCode ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="This Invoke code do the necessary filtration with Trade Receipts" Code="Dim wb1 As Microsoft.Office.Interop.Excel.Workbook&#xA;Dim wb As Microsoft.Office.Interop.Excel.Workbook&#xA;Dim ws As Microsoft.Office.Interop.Excel.Worksheet&#xA;Dim ws1 As Microsoft.Office.Interop.Excel.Worksheet&#xA;Dim ws2 As Microsoft.Office.Interop.Excel.Worksheet&#xA;Dim rng As Microsoft.Office.Interop.Excel.Range &#xA;Dim lastRow As Integer&#xA;Dim lastRow1 As Integer&#xA;Dim lastRow2 As Integer&#xA;Dim lastrowStr As String&#xA;Try&#xA; excel = New Microsoft.Office.Interop.Excel.ApplicationClass'create the instance of excel work book'&#xA;  &#xA; wb=excel.Workbooks.Open(in_FilePath+in_CurrentMonth+&quot;-&quot;+in_CurrentYear.ToString+&quot;\Phase 1-Buy sell Automation.xlsx&quot;)&#xA; excel.DisplayAlerts=False&#xA; excel.Visible=True&#xA;ws=CType(wb.Sheets(&quot;Receipt Register-Buy sell&quot;),Microsoft.Office.Interop.Excel.Worksheet)'select a sheet and activiates'&#xA;ws.Activate&#xA; lastRow = ws.UsedRange.Rows.Count&#xA; ws.Range(&quot;A24:R&quot;+lastRow.ToString).Delete&#xA;&#xA;wb1=excel.Workbooks.Open(in_FilePath+in_CurrentMonth+&quot;-&quot;+in_CurrentYear.ToString+&quot;\Trade Receipts.xls&quot;)&#xA;ws1=CType(wb1.Sheets(&quot;Trade Receipts-Consol&quot;),Microsoft.Office.Interop.Excel.Worksheet)'select a sheet and activiates'&#xA;ws1.Activate&#xA;lastRow1=ws1.UsedRange.Rows.Count&#xA;ws1.Range(&quot;A3:N&quot;+lastRow1.ToString).AutoFilter(ws1.UsedRange.Find(&quot;Payment Method Name&quot;).Column,{&quot;Citibank UK - GBP&quot;,&quot;Citibank UK - EUR&quot;,&quot;Citibank UK - USD&quot;},microsoft.Office.Interop.Excel.XlAutoFilterOperator.xlFilterValues)&#xA;console.WriteLine(lastRow1.ToString)&#xA;ws1.Range(&quot;A3:N&quot;+lastRow1.ToString).Rows.Copy&#xA;ws.Range(&quot;A24&quot;).PasteSpecial(Microsoft.Office.Interop.Excel.XlPasteType.xlPasteFormulasAndNumberFormats)&#xA;Catch es As Exception&#xA; Console.WriteLine(es.Message)&#xA; Throw es&#xA;Finally&#xA;wb.Save&#xA;wb.Close&#xA;excel.Quit&#xA; &#xA;End Try" DisplayName="Invoke Code_FiltrationWithTradeReceipts" sap:VirtualizedContainerService.HintSize="333.6,208.8" sap2010:WorkflowViewState.IdRef="InvokeCode_1">
+      <ui:InvokeCode.Arguments>
+        <InArgument x:TypeArguments="moie:ApplicationClass" x:Key="excel" />
+        <InArgument x:TypeArguments="x:String" x:Key="in_FilePath">[in_FilePath]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_CurrentMonth">[in_CurrentMonth]</InArgument>
+        <InArgument x:TypeArguments="x:Int32" x:Key="in_CurrentYear">[in_CurrentYear]</InArgument>
+      </ui:InvokeCode.Arguments>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:InvokeCode>
+    <ui:LogMessage DisplayName="Log Message Trade receipt filtration completed" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="Trade receipt filtration completed" />
+  </Sequence>
+</Activity>

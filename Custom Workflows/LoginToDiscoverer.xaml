@@ -1,0 +1,187 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="DownloadFilesForUS" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_DiscoverURL" Type="InArgument(x:String)" />
+    <x:Property Name="in_DiscovererUsername" Type="InArgument(x:String)" />
+    <x:Property Name="in_DiscovererPassword" Type="InArgument(x:String)" />
+    <x:Property Name="in_DiscovererDatabase" Type="InArgument(x:String)" />
+    <x:Property Name="in_DiscovererResponsibility" Type="InArgument(x:String)" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>495.2,1684.8</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>DownloadFilesForUS_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:Annotation.AnnotationText="LoginToDiscoverer" DisplayName="Sequence_LoginToDiscoverer" sap:VirtualizedContainerService.HintSize="475.2,1624.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:OpenBrowser UiBrowser="{x:Null}" BrowserType="IE" DisplayName="Open Browser LoginToDiscoverer" Hidden="False" sap:VirtualizedContainerService.HintSize="433.6,1504" sap2010:WorkflowViewState.IdRef="OpenBrowser_1" NewSession="True" Private="False" Url="[in_DiscoverURL]">
+      <ui:OpenBrowser.Body>
+        <ActivityAction x:TypeArguments="x:Object">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Do-Browser " sap:VirtualizedContainerService.HintSize="375.2,1404" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:MaximizeWindow Window="{x:Null}" DisplayName="Maximize Window IE" sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="MaximizeWindow_1" />
+            <ui:SelectItem ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="4000" DisplayName="Select connection access" sap:VirtualizedContainerService.HintSize="333.6,135.2" sap2010:WorkflowViewState.IdRef="SelectItem_1" Item="Oracle Applications">
+              <ui:SelectItem.Items>
+                <scg:List x:TypeArguments="x:String" Capacity="4">
+                  <x:String>OracleBI Discoverer</x:String>
+                  <x:String>Oracle Applications</x:String>
+                  <x:String>OracleBI Discoverer for OLAP</x:String>
+                </scg:List>
+              </ui:SelectItem.Items>
+              <ui:SelectItem.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="f49f2f0f7c93950ce148d1a5d27e95f6" Selector="&lt;html title='Connect to Discoverer' /&gt;&lt;webctrl id='connectionAccessType' tag='SELECT' /&gt;" WaitForReady="COMPLETE" />
+              </ui:SelectItem.Target>
+            </ui:SelectItem>
+            <ui:TypeInto DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" Activate="True" ClickBeforeTyping="False" DelayBefore="2000" DisplayName="Type Usename" EmptyField="False" sap:VirtualizedContainerService.HintSize="333.6,135.2" sap2010:WorkflowViewState.IdRef="TypeInto_1" SendWindowMessages="False" SimulateType="False" Text="[in_DiscovererUsername]">
+              <ui:TypeInto.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="082ae254ff461600dda17b2d2c1f0331" Selector="&lt;html title='Connect to Discoverer' /&gt;&lt;webctrl id='userName' tag='INPUT' /&gt;" WaitForReady="COMPLETE" />
+              </ui:TypeInto.Target>
+            </ui:TypeInto>
+            <ui:TypeInto DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" Activate="True" ClickBeforeTyping="False" DelayBefore="1000" DisplayName="Type Password" EmptyField="False" sap:VirtualizedContainerService.HintSize="333.6,135.2" sap2010:WorkflowViewState.IdRef="TypeInto_2" SendWindowMessages="False" SimulateType="False" Text="[in_DiscovererPassword]">
+              <ui:TypeInto.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="489f9cbeca094549f415993e37df5d9f" Selector="&lt;html title='Connect to Discoverer' /&gt;&lt;webctrl id='password' tag='INPUT' /&gt;" WaitForReady="COMPLETE" />
+              </ui:TypeInto.Target>
+            </ui:TypeInto>
+            <ui:TypeInto DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" Activate="True" ClickBeforeTyping="False" DelayBefore="1000" DisplayName="Type Database" EmptyField="False" sap:VirtualizedContainerService.HintSize="333.6,135.2" sap2010:WorkflowViewState.IdRef="TypeInto_3" SendWindowMessages="False" SimulateType="False" Text="[in_DiscovererDatabase+ &quot;[k(enter)]&quot;]">
+              <ui:TypeInto.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="71d2f81d5ae5908e9e1bdc8752718462" Selector="&lt;html title='Connect to Discoverer' /&gt;&lt;webctrl id='databaseIdentifier' tag='INPUT' /&gt;" WaitForReady="COMPLETE" />
+              </ui:TypeInto.Target>
+            </ui:TypeInto>
+            <ui:LogMessage DisplayName="Log Message Discoverer Logged in" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="Discoverer Logged in" />
+            <ui:SelectItem ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="5000" DisplayName="Select Responsibility" sap:VirtualizedContainerService.HintSize="333.6,135.2" sap2010:WorkflowViewState.IdRef="SelectItem_2" Item="[in_DiscovererResponsibility.Trim]">
+              <ui:SelectItem.Items>
+                <scg:List x:TypeArguments="x:String" Capacity="50">
+                  <x:String>VM AR Cash Applications - IE</x:String>
+                  <x:String>VM AR Cash Applications - US</x:String>
+                  <x:String>VM AR Collections - IE</x:String>
+                  <x:String>VM AR Collections - US</x:String>
+                  <x:String>VM Customer Financial - AR Collections - IE</x:String>
+                  <x:String>VM Customer Financial - AR Collections - US</x:String>
+                  <x:String>VM EBS User Access Request</x:String>
+                  <x:String>VM General Ledger Accountant - IE</x:String>
+                  <x:String>VM General Ledger Accountant - US</x:String>
+                  <x:String>VM General Ledger Inquiry - IE</x:String>
+                  <x:String>VM General Ledger Maintenance - AE</x:String>
+                  <x:String>VM General Ledger Maintenance - AM</x:String>
+                  <x:String>VM General Ledger Maintenance - AT</x:String>
+                  <x:String>VM General Ledger Maintenance - AU</x:String>
+                  <x:String>VM General Ledger Maintenance - BG</x:String>
+                  <x:String>VM General Ledger Maintenance - BL</x:String>
+                  <x:String>VM General Ledger Maintenance - BM</x:String>
+                  <x:String>VM General Ledger Maintenance - BR</x:String>
+                  <x:String>VM General Ledger Maintenance - CA</x:String>
+                  <x:String>VM General Ledger Maintenance - CH</x:String>
+                  <x:String>VM General Ledger Maintenance - CN</x:String>
+                  <x:String>VM General Ledger Maintenance - CR</x:String>
+                  <x:String>VM General Ledger Maintenance - DE</x:String>
+                  <x:String>VM General Ledger Maintenance - DE (USD)</x:String>
+                  <x:String>VM General Ledger Maintenance - DK</x:String>
+                  <x:String>VM General Ledger Maintenance - ES</x:String>
+                  <x:String>VM General Ledger Maintenance - FR</x:String>
+                  <x:String>VM General Ledger Maintenance - HK</x:String>
+                  <x:String>VM General Ledger Maintenance - IE</x:String>
+                  <x:String>VM General Ledger Maintenance - IL</x:String>
+                  <x:String>VM General Ledger Maintenance - IM</x:String>
+                  <x:String>VM General Ledger Maintenance - IN</x:String>
+                  <x:String>VM General Ledger Maintenance - IT</x:String>
+                  <x:String>VM General Ledger Maintenance - JP</x:String>
+                  <x:String>VM General Ledger Maintenance - JV</x:String>
+                  <x:String>VM General Ledger Maintenance - KR</x:String>
+                  <x:String>VM General Ledger Maintenance - MY</x:String>
+                  <x:String>VM General Ledger Maintenance - NL</x:String>
+                  <x:String>VM General Ledger Maintenance - NZ</x:String>
+                  <x:String>VM General Ledger Maintenance - SE</x:String>
+                  <x:String>VM General Ledger Maintenance - SG</x:String>
+                  <x:String>VM General Ledger Maintenance - TH</x:String>
+                  <x:String>VM General Ledger Maintenance - TR</x:String>
+                  <x:String>VM General Ledger Maintenance - TW</x:String>
+                  <x:String>VM General Ledger Maintenance - UK</x:String>
+                  <x:String>VM General Ledger Maintenance - UKS2</x:String>
+                  <x:String>VM General Ledger Maintenance - US</x:String>
+                  <x:String>VM OM Inquiry - IE</x:String>
+                  <x:String>VM OM Inquiry - US</x:String>
+                  <x:String>VM OM Revenue - IE</x:String>
+                </scg:List>
+              </ui:SelectItem.Items>
+              <ui:SelectItem.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="92f9af217719159e4a3be5ab49f53114" Selector="&lt;html title='Select a Responsibility.' /&gt;&lt;webctrl tag='SELECT' /&gt;" WaitForReady="COMPLETE" />
+              </ui:SelectItem.Target>
+            </ui:SelectItem>
+            <ui:Click ClickType="CLICK_SINGLE" DelayBefore="1000" DelayMS="5000" DisplayName="Click Continue" sap:VirtualizedContainerService.HintSize="333.6,107.2" sap2010:WorkflowViewState.IdRef="Click_4" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False" SimulateClick="False">
+              <ui:Click.CursorPosition>
+                <ui:CursorPosition Position="Center">
+                  <ui:CursorPosition.OffsetX>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:CursorPosition.OffsetX>
+                  <ui:CursorPosition.OffsetY>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:CursorPosition.OffsetY>
+                </ui:CursorPosition>
+              </ui:Click.CursorPosition>
+              <ui:Click.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="7d037aa109c38bdb8e45e8ec3bd65d3f" Selector="&lt;html title='Select a Responsibility.' /&gt;&lt;webctrl aaname='Continue' tag='IMG' /&gt;" WaitForReady="COMPLETE" />
+              </ui:Click.Target>
+            </ui:Click>
+            <ui:LogMessage DisplayName="Log Message Discoverer opened" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="Discoverer opened" />
+          </Sequence>
+        </ActivityAction>
+      </ui:OpenBrowser.Body>
+    </ui:OpenBrowser>
+  </Sequence>
+</Activity>

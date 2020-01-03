@@ -1,0 +1,84 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="EndingAgeingFiltration" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:moie="clr-namespace:Microsoft.Office.Interop.Excel;assembly=Microsoft.Office.Interop.Excel" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_FilePath" Type="InArgument(x:String)" />
+    <x:Property Name="in_CurrentMonth" Type="InArgument(x:String)" />
+    <x:Property Name="in_CurrentYear" Type="InArgument(x:Int32)" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>395.2,522.4</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>EndingAgeingFiltration_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.IntelligentOCR</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:Annotation.AnnotationText="EndingAginingFiltration." DisplayName="Sequence_EndingAginingFiltration" sap:VirtualizedContainerService.HintSize="375.2,462.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:InvokeCode ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="This Invoke code do the necessary filtration with EndingAgeing sheet" Code="Dim wb1 As Microsoft.Office.Interop.Excel.Workbook&#xA;Dim wb As Microsoft.Office.Interop.Excel.Workbook&#xA;Dim endingWs As Microsoft.Office.Interop.Excel.Worksheet&#xA;Dim multiAgeingWs As Microsoft.Office.Interop.Excel.Worksheet&#xA;Dim arMovmentWs As Microsoft.Office.Interop.Excel.Worksheet&#xA;Dim receiptRegisterWs As Microsoft.Office.Interop.Excel.Worksheet&#xA;Dim rng As Microsoft.Office.Interop.Excel.Range &#xA;Dim lastRow As Integer&#xA;Dim lastRow1 As Integer&#xA;Dim lastRow2 As String&#xA;Dim lastrowStr As String&#xA;Dim lastRow3 As String&#xA;Try&#xA; excel = New Microsoft.Office.Interop.Excel.ApplicationClass'create the instance of excel work book'&#xA;  &#xA; wb=excel.Workbooks.Open(in_FilePath+in_CurrentMonth+&quot;-&quot;+in_CurrentYear.ToString+&quot;\Phase 1-Buy sell Automation.xlsx&quot;)&#xA;&#xA; wb1=excel.Workbooks.Open(in_FilePath+in_CurrentMonth+&quot;-&quot;+in_CurrentYear.ToString+&quot;\Multi Ageing.xlsx&quot;)&#xA; excel.DisplayAlerts=False&#xA; excel.Visible=True&#xA; endingWs=CType(wb.Sheets(&quot;Ending Ageing(Buy Sell)&quot;),Microsoft.Office.Interop.Excel.Worksheet)'select a sheet and activiates'&#xA;endingWs.Activate&#xA;multiAgeingWs=CType(wb1.Sheets(&quot;FNDWRR&quot;),Microsoft.Office.Interop.Excel.Worksheet)'select a sheet and activiates'&#xA;multiAgeingWs.Activate&#xA;arMovmentWs=CType(wb.Sheets(&quot;AR Movement&quot;),Microsoft.Office.Interop.Excel.Worksheet)'select a sheet and activiates'&#xA;arMovmentWs.Activate&#xA;receiptRegisterWs=CType(wb.Sheets(&quot;Receipt Register-Buy sell&quot;),Microsoft.Office.Interop.Excel.Worksheet)'select a sheet and activiates'&#xA;receiptRegisterWs.Activate&#xA;&#xA;Dim endCustName As String&#xA;Dim ageingCustName As String&#xA;Dim receiptNo As String&#xA;Dim armInvoiceNo As String&#xA;Dim armInvoiceLastRow As String&#xA;Dim ageingLastRow As String&#xA;&#xA;'Finding Customer Name cell in Ending Ageing sheet &#xA;endCustName = endingWs.UsedRange.Find(&quot;Customer Name&quot;).Address.ToString&#xA;'------------------------------------------------------------------------------------------------------------------------------------------&#xA;'Finding Customer Name cell in Multi Ageing File&#xA;ageingCustName = multiAgeingWs.UsedRange.Find(&quot;Customer Name&quot;).Address.ToString&#xA;'----------------------------------------------------------------------------------------------------------------------------------------&#xA;'Finding Last row of Multi Ageing data sheet&#xA;ageingLastRow = multiAgeingWs.Range(&quot;AV&quot;+multiAgeingWs.UsedRange.Rows.Count.ToString).End(Microsoft.Office.Interop.Excel.XlDirection.xlUp).Address.ToString&#xA;&#xA;'Find cell no. of Receipt Number&#xA;receiptNo = receiptRegisterWs.UsedRange.Find(&quot;Receipt Number&quot;).Address.ToString&#xA;&#xA;'Find cell no. of Invoice Number&#xA;armInvoiceNo = arMovmentWs.UsedRange.Find(&quot;Invoice  Number&quot;).Address.ToString&#xA;&#xA;'Copy Receipt Numbers &#xA;receiptRegisterWs.Range(receiptNo.Split(&quot;$&quot;c)(1)+(CInt(receiptNo.Split(&quot;$&quot;c)(2))+1).ToString+&quot;:&quot;+receiptNo.Split(&quot;$&quot;c)(1)+receiptRegisterWs.UsedRange.Rows.Count.ToString).Copy&#xA;'---------------------------------------------------------------------------------------------------------------&#xA;'Paste Receipt Numbers below Invoice Number in AR Movement&#xA;armInvoiceLastRow = arMovmentWs.Range(armInvoiceNo.Split(&quot;$&quot;c)(1)+arMovmentWs.UsedRange.Rows.Count.ToString).End(Microsoft.Office.Interop.Excel.XlDirection.xlUp).Address.ToString&#xA;arMovmentWs.Range(armInvoiceLastRow.Split(&quot;$&quot;c)(1)+(CInt(armInvoiceLastRow.Split(&quot;$&quot;c)(2))+1).ToString).PasteSpecial(Microsoft.Office.Interop.Excel.XlPasteType.xlPasteAll)&#xA;'-----------------------------------------------------------------------------------------------------------------------------------------------&#xA;'Calculate new count of Invoice number's row&#xA;armInvoiceLastRow = (arMovmentWs.UsedRange.Rows.Count+1).ToString&#xA;'-----------------------------------------------------------------------------------------------------------------------------------------------&#xA;'Appplying Advanced Filter &#xA;multiAgeingWs.Range(&quot;A&quot;+ageingCustName.Split(&quot;$&quot;c)(2)+&quot;:&quot;+ageingLastRow.Replace(&quot;$&quot;,&quot;&quot;)).AdvancedFilter(Action:=Microsoft.Office.Interop.Excel.XlFilterAction.xlFilterInPlace,CriteriaRange:=arMovmentWs.Range(armInvoiceNo.Replace(&quot;$&quot;,&quot;&quot;)+&quot;:&quot;+armInvoiceNo.Split(&quot;$&quot;c)(1)+armInvoiceLastRow),Unique:=False)&#xA;'----------------------------------------------------------------------------------------------------------------------------------------------------&#xA;'Copy data from Multi ageing file&#xA;multiAgeingWs.Range(ageingCustName.Split(&quot;$&quot;c)(1)+(CInt(ageingCustName.Split(&quot;$&quot;c)(2))+1).ToString+&quot;:&quot;+multiAgeingWs.Range(&quot;AV&quot;+multiAgeingWs.UsedRange.Rows.Count.ToString).End(Microsoft.Office.Interop.Excel.XlDirection.xlUp).Address.ToString.Replace(&quot;$&quot;,&quot;&quot;)).Copy&#xA;&#xA;'-----------------------------------------------------------------------------------------------------------------------------------------&#xA;'Paste data into Ending Ageing Sheet &#xA;endingWs.Range(endCustName.Split(&quot;$&quot;c)(1)+(CInt(endCustName.Split(&quot;$&quot;c)(2))+1).ToString).PasteSpecial(Microsoft.Office.Interop.Excel.XlPasteType.xlPasteAll)&#xA;'-------------------------------------------------------------------------------------------------------------------------------------------&#xA;'Apply Formula to Column AW in Ending Ageing Sheet&#xA;endingWs.Range(&quot;AW&quot;+(CInt(endCustName.Split(&quot;$&quot;c)(2))+1).ToString+&quot;:AW&quot;+endingWs.UsedRange.Rows.Count.ToString).Formula = &quot;=IF(ISERROR(VLOOKUP(E&quot;+(CInt(endCustName.Split(&quot;$&quot;c)(2))+1).ToString+&quot;,'Receipt Register-Buy sell'!B:F,5,0)),0,O&quot;+(CInt(endCustName.Split(&quot;$&quot;c)(2))+1).ToString+&quot;)&quot;&#xA;'----------------------------------------------------------------------------------------------------------------------------------------------&#xA;'Delete Extra rows in Invoice Number column in AR Movements Sheet&#xA;arMovmentWs.Range(armInvoiceNo.Split(&quot;$&quot;c)(1)+(CInt(arMovmentWs.Range(&quot;A&quot;+arMovmentWs.UsedRange.Rows.Count.ToString).End(Microsoft.Office.Interop.Excel.XlDirection.xlUp).Address.ToString.Split(&quot;$&quot;c)(2))+1).ToString+&quot;:&quot;+armInvoiceNo.Split(&quot;$&quot;c)(1)+(arMovmentWs.UsedRange.Rows.Count+1).ToString).ClearContents&#xA;&#xA;&#xA;Catch es As Exception&#xA; Console.WriteLine(es.Message)&#xA; Throw es&#xA;Finally&#xA;wb.Save&#xA;wb.Close&#xA;excel.Quit&#xA; &#xA;End Try" DisplayName="Invoke Code" sap:VirtualizedContainerService.HintSize="333.6,208.8" sap2010:WorkflowViewState.IdRef="InvokeCode_1">
+      <ui:InvokeCode.Arguments>
+        <InArgument x:TypeArguments="moie:ApplicationClass" x:Key="excel" />
+        <InArgument x:TypeArguments="x:String" x:Key="in_FilePath">[in_FilePath]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_CurrentMonth">[in_CurrentMonth]</InArgument>
+        <InArgument x:TypeArguments="x:Int32" x:Key="in_CurrentYear">[in_CurrentYear]</InArgument>
+      </ui:InvokeCode.Arguments>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:InvokeCode>
+    <ui:LogMessage DisplayName="Log Message Ending Ageing filtration completed" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="Ending Ageing filtration completed" />
+  </Sequence>
+</Activity>
